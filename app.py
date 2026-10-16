@@ -22,7 +22,7 @@ if st.button("Absenden", type="primary"):
             try:
                 # Wir nutzen das empfohlene Flash-Modell
                 response = client.models.generate_content(
-                    model="gemini-2.5-flash",
+                    model="gemini-3.8-flash",
                     contents=user_input,
                 )
                 st.markdown("### Antwort:")
