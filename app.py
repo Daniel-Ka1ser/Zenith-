@@ -13,7 +13,7 @@ if st.button("Absenden", type="primary"):
     if user_input.strip():
         with st.spinner("Antwort wird generiert..."):
             response = client.models.generate_content(
-                model="gemini-2.5-flash",
+                model="gemini-2.0-flash",
                 contents=user_input,
             )
             st.markdown("### Antwort:")
