@@ -6,7 +6,7 @@ from google import genai
 st.set_page_config(page_title="Meine KI App", page_icon="✨", layout="centered")
 st.title("Meine Gemini App")
 
-# API Client initialisieren (unterstützt auch Cloud-/Workspace-Tokens)
+# API Client initialisieren
 api_key = os.environ.get("GEMINI_API_KEY")
 if api_key:
     client = genai.Client(api_key=api_key)
@@ -20,14 +20,14 @@ if st.button("Absenden", type="primary"):
     if user_input.strip():
         with st.spinner("Antwort wird generiert..."):
             try:
-                # Anfrage an das Gemini 2.0 Flash Modell senden
+                # Wir nutzen das empfohlene Flash-Modell
                 response = client.models.generate_content(
-                    model="gemini-1.5-flash",
+                    model="gemini-2.5-flash",
                     contents=user_input,
                 )
                 st.markdown("### Antwort:")
                 st.write(response.text)
             except Exception as e:
-                st.error(f"Ein Fehler ist aufgetreten: {e}")
+                st.error(f"Fehler: {e}")
     else:
         st.warning("Bitte gib zuerst einen Text ein.")
